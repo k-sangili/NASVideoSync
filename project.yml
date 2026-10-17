@@ -1,0 +1,57 @@
+name: NASVideoSync
+options:
+  bundleIdPrefix: com.kamesh
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    ENABLE_PREVIEWS: YES
+
+packages:
+  AMSMB2:
+    url: https://github.com/amosavian/AMSMB2
+    exactVersion: 4.0.3
+
+targets:
+  NASVideoSync:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: NASVideoSync
+    dependencies:
+      - package: AMSMB2
+        embed: true
+    settings:
+      base:
+        INFOPLIST_FILE: NASVideoSync/App/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.kamesh.NASVideoSync
+        DEVELOPMENT_TEAM: UR6CFN23ZD
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    info:
+      path: NASVideoSync/App/Info.plist
+      properties:
+        CFBundleName: NASVideoSync
+        CFBundleDisplayName: NAS Sync
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchScreen:
+          UIImageName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSPhotoLibraryUsageDescription: NAS Sync reads your videos so it can copy them to your TrueNAS.
+        NSLocalNetworkUsageDescription: NAS Sync connects to your TrueNAS over SMB on your home network.
+        NSLocationWhenInUseUsageDescription: NAS Sync uses your location to start a transfer when you arrive home.
+        NSLocationAlwaysAndWhenInUseUsageDescription: NAS Sync starts a transfer in the background when you arrive home.
+        UIBackgroundModes:
+          - processing
+          - fetch
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.kamesh.NASVideoSync.charging-sync
+          - com.kamesh.NASVideoSync.upload.*
