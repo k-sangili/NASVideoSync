@@ -3,6 +3,14 @@
 An iPhone app that automatically copies videos from the Photos library to a TrueNAS (or any SMB) share,
 then optionally removes them from the phone once they're verified on the NAS.
 
+<p align="center">
+  <img src="docs/screenshots/main.png" alt="Main screen: sync status, library counts, last run" width="280">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/settings.png" alt="Settings: SMB connection, what to sync, delete after upload" width="280">
+</p>
+
+<sub>Screenshots use demo data in the iOS Simulator.</sub>
+
 ## Why I built this
 
 Videos are what fill up an iPhone. Photos are small, but a few minutes of 4K video is gigabytes,
